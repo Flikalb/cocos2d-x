@@ -22,8 +22,16 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-
+#import <AppKit/AppKit.h>
 #include "PlayerFileDialogServiceMac.h"
+
+#ifndef GLFW_EXPOSE_NATIVE_NSGL
+#define GLFW_EXPOSE_NATIVE_NSGL
+#endif
+#ifndef GLFW_EXPOSE_NATIVE_COCOA
+#define GLFW_EXPOSE_NATIVE_COCOA
+#endif
+// (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 
 #include "glfw3.h"
 #include "glfw3native.h"

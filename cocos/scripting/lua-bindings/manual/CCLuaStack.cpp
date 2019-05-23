@@ -136,7 +136,7 @@ bool LuaStack::init(void)
     toluafix_open(_state);
 
     // Register our version of the global "print" function
-    const luaL_reg global_functions [] = {
+    const luaL_Reg global_functions [] = {
         {"print", lua_print},
         {"release_print",lua_release_print},
         {nullptr, nullptr}
@@ -801,7 +801,7 @@ int LuaStack::luaLoadChunksFromZIP(lua_State *L)
             std::string filename = zip->getFirstFilename();
             while (filename.length()) {
                 ssize_t bufferSize = 0;
-                unsigned char *zbuffer = zip->getFileData(filename.c_str(), &bufferSize);
+                unsigned char *zbuffer = zip->getFileData(filename, &bufferSize);
                 if (bufferSize) {
                     // remove .lua or .luac extension
                     size_t pos = filename.find_last_of('.');
